@@ -48,3 +48,11 @@ recPlots<-function(input)
 
 }
 
+movePlots<-function(input)
+{
+  sdx<-input$sdxaxs
+  sdy<-input$sdyaxs
+  temp<-movArray(20,20,sdx,sdy)
+  filled.contour(temp[,,210])
+  
+}

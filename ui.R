@@ -1,6 +1,7 @@
 library(shiny)
 library(markdown)
 library(ggmap)
+library(shinyIncubator)
 # RENDER EQUILIBRIUM USER INTERFACE
 renderFleetDynamics <- function(prefix)
 {
@@ -21,7 +22,7 @@ renderFleetDynamics <- function(prefix)
   )
   
 }
-
+progressInit()
 # RENDER LAYOUT CONTROLS FOR TUPLIP PLOTS
 renderLayoutInputs <- function()
 {
@@ -142,16 +143,19 @@ renderLifeHistory <- function()
               ),
            
               # Movement
-              tabPanel("Movement",
-                       h4("Median depletion"),
-                       tableOutput("viewDepletionTable"),
-                       h4("Median catch"),
-                       tableOutput("viewCatchTable"),
-                       h4("Probability of falling below limit reference point P(SB<0.20)"),
-                       tableOutput("viewSSBlimit"),
-                       h4("Probability of falling below threshold reference point P(SB<0.30)"),
-                       tableOutput("viewSSBthreshold")
-              )
+              tabPanel("Movement (per timestep)",
+                       sidebarPanel(
+                       numericInput("sdxaxs", label="Standard deviation of movement in the x axis", value = 1),
+                       numericInput("sdyaxs", label="Standard deviation of movement in the y axis",value = 1)
+              ),
+                       mainPanel(plotOutput("movement"))
+                       
+                       
+              ),
+              # Habitat
+              tabPanel("Habitat"
+
+                      )
               
   )
 }
@@ -219,11 +223,7 @@ shinyUI(fluidPage(navbarPage("Fishery sandbox",
                                       fluidRow(
                                         renderLifeHistory()
                                 )),
-                             
-                             # OPERATING MODEL INTERFACE
-                             tabPanel("Habitat",
-                                      renderSpat()
-                                ),
+
 
                              # EQUILIBRIUM INTERFACE
                              tabPanel("Comparison",
@@ -254,7 +254,7 @@ shinyUI(fluidPage(navbarPage("Fishery sandbox",
                                         column(6,
                                                tabsetPanel(type="tabs",id="eqtab",
                                                            tabPanel("Plots",
-                                                                    plotOutput("a_equilPlot", height = "550px")
+                                                                    plotOutput("MScomp", height = "550px")
                                                            ),
                                                            tabPanel("Tables",
                                                                     tags$p("Biological sustainability"),

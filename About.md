@@ -1,22 +1,17 @@
 ## Fisheries sandbox
 The Fishery Sandbox is a platform for simulating real-world fisheries and performing cost-benefit analyses for competing management strategies.  It is designed to accept as much or as little information as is available and will be able to test the simplest of management interventions (e.g. spatial closures) to more complex measures, such as age-structured stock assessments. For more details on the underlying dynamics of the simulation framework, see <http://www.reddit.com>.
 
-
 ### Spatial extent
 -
-I want an interactive map here. It asks the individual for a location, then lets them pick the outline of the fishery.
-
+Enter the latitude and longitude of the fishery, zoom to desired level, click to define fishery extent.
 
 ### Life history
 -
-This will ask the user if they know a range of life history parameters.  If they respond 'no', they will be scraped from fishbase.
+Defines growth, weight, movement, habitat, if available. Insert method to scrape from fishbase if there is no data, given a species name.
 
 ### Fleet dynamics
-
-----
-### Habitat
 -
-Take the grid over the area and 
+Defines the characteristics of the current fishing.
 
 ### Scenarios
 -
