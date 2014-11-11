@@ -143,7 +143,7 @@ renderLifeHistory <- function()
               ),
            
               # Movement
-              tabPanel("Movement (per timestep)",
+              tabPanel("Movement",
                        sidebarPanel(
                        numericInput("sdxaxs", label="Standard deviation of movement in the x axis", value = 1),
                        numericInput("sdyaxs", label="Standard deviation of movement in the y axis",value = 1)
@@ -224,7 +224,12 @@ shinyUI(fluidPage(navbarPage("Fishery sandbox",
                                         renderLifeHistory()
                                 )),
 
-
+                            # Defining the life history
+                              tabPanel("Simulation",
+                                  fluidRow(
+ 
+                                     )),
+                                    
                              # EQUILIBRIUM INTERFACE
                              tabPanel("Comparison",
                                       fluidRow(
