@@ -153,8 +153,9 @@ renderLifeHistory <- function()
                        
               ),
               # Habitat
-              tabPanel("Habitat"
-
+              tabPanel("Habitat",
+                      habdat<-as.matrix(read.csv("habitatBLZ.csv"))
+                       filled.contour(z=habdat)
                       )
               
   )

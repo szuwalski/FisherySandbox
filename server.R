@@ -3,8 +3,15 @@ require(animation)
 require(caTools)
 
 library(devtools)
-install_github("rstudio/shiny-incubator")
 library(shinyIncubator)
+
+
+  if (!require("shinyIncubator",character.only = TRUE))
+  {
+    install_github("rstudio/shiny-incubator")
+    if(!require(x,character.only = TRUE)) stop("Package not found")
+  }
+
 
 source("helpers.R")
 source("https://raw.githubusercontent.com/SNAPwg/SNAP/master/Master.R")
@@ -63,6 +70,10 @@ shinyServer(function(input, output, session) {
     
   })
   
+  dataInput <- reactive({
+    
+    
+  })
   
   
   # Expression that generates a histogram. The expression is
